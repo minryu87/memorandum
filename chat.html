@@ -1,0 +1,44 @@
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<style>
+  :root {
+    --chat--message--font-size: 0.875rem;
+    --chat--heading--font-size: 1.5em;
+    --chat--subtitle--font-size: 0.875rem;
+  }
+  /* Framer 환경에서 정상 동작하는 순수 CSS */
+  #n8n-chat textarea[data-n8n-chat] {
+    font-size: 0.875rem;
+  }
+</style>
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+  
+  createChat({
+    webhookUrl: 'https://medisales-u45006.vm.elestio.app/webhook/daeaaf03-8f4b-4d03-903a-bbcc6942c542/chat',
+    mode: 'fullscreen',
+    defaultLanguage: 'ko',
+    showWelcomeScreen: false,
+    initialOpen: true,
+    chatInputKey: 'chatInput',
+    chatSessionKey: 'sessionId',
+    metadata: {},
+    initialMessages: [
+      '아래 내용을 포함해서 입력해주세요.',
+      '• 수신자명',
+      '• 참조자명', 
+      '• 담당변호사명',
+      '• 일자',
+      '• 질의사항 관련 내용',
+      '• 검토의견 생성에 대한 가이드'
+    ],
+    i18n: {
+      ko: {
+        title: '안녕하세요! 메디로이어입니다. 👋',
+        subtitle: '검토의견서 초안을 생성해드릴게요',
+        footer: '',
+        getStarted: '새로운 대화 시작하기',
+        inputPlaceholder: '내용을 입력해주세요..'
+      }
+    }
+  });
+</script>
