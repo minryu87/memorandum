@@ -8,6 +8,21 @@
   /* Framer 환경에서 정상 동작하는 순수 CSS */
   #n8n-chat textarea[data-n8n-chat] {
     font-size: 0.875rem;
+    min-height: 120px !important;
+    height: 120px !important;
+    resize: vertical;
+  }
+  
+  /* 입력 영역 전체 크기 조정 */
+  .n8n-chat-input-container,
+  [data-n8n-chat] .chat-input-container {
+    min-height: 140px !important;
+  }
+  
+  /* 입력 영역의 패딩 조정 */
+  .n8n-chat-input,
+  [data-n8n-chat] .chat-input {
+    padding: 15px !important;
   }
 </style>
 <script type="module">
