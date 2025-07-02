@@ -1,54 +1,1912 @@
-<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-<style>
-  :root {
-    --chat--message--font-size: 0.875rem;
-    --chat--heading--font-size: 1.5em;
-    --chat--subtitle--font-size: 0.875rem;
-  }
-  /* Framer 환경에서 정상 동작하는 순수 CSS */
-  #n8n-chat textarea[data-n8n-chat] {
-    font-size: 0.875rem;
-    min-height: 120px !important;
-    height: 120px !important;
-    resize: vertical;
-  }
-  
-  /* 입력 영역 전체 크기 조정 */
-  .n8n-chat-input-container,
-  [data-n8n-chat] .chat-input-container {
-    min-height: 140px !important;
-  }
-  
-  /* 입력 영역의 패딩 조정 */
-  .n8n-chat-input,
-  [data-n8n-chat] .chat-input {
-    padding: 15px !important;
-  }
-</style>
-<script type="module">
-  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-  
-  createChat({
-    webhookUrl: 'https://medisales-u45006.vm.elestio.app/webhook/daeaaf03-8f4b-4d03-903a-bbcc6942c542/chat',
-    mode: 'fullscreen',
-    defaultLanguage: 'ko',
-    showWelcomeScreen: false,
-    initialOpen: true,
-    chatInputKey: 'chatInput',
-    chatSessionKey: 'sessionId',
-    metadata: {},
-    initialMessages: [
-      '시작 이라고 입력해주세요',
-      '모든 텍스트는 마지막에 빈칸(스페이스)를 넣어서 입력해주세요.'
-    ],
-    i18n: {
-      ko: {
-        title: '안녕하세요! 메디로이어입니다. 👋',
-        subtitle: '검토의견서 초안을 생성해드릴게요',
-        footer: '',
-        getStarted: '새로운 대화 시작하기',
-        inputPlaceholder: '내용을 입력해주세요..'
-      }
-    }
-  });
-</script>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>병원 온라인 마케팅 서비스 기획서</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 60px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-left: 5px solid #ffc107;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .service-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .value-card {
+            background-color: #e3f2fd;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .flow-chart {
+            background-color: #fff;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .flow-step {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin: 10px;
+            font-weight: bold;
+        }
+        
+        .arrow {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.5em;
+            color: #3498db;
+        }
+        
+        .cluster-example {
+            background-color: #f0f8ff;
+            border: 1px solid #b0d4f1;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .agent-structure {
+            background-color: #fafafa;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        ul {
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .toc h2 {
+            border: none;
+            margin-top: 0;
+            padding-left: 0;
+        }
+        
+        .toc ol {
+            counter-reset: section;
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .toc li {
+            counter-increment: section;
+            margin-bottom: 10px;
+        }
+        
+        .toc li::before {
+            content: counter(section) ". ";
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .page-break {
+            page-break-before: always;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>병원 온라인 마케팅 통합 관리 서비스 기획서</h1>
+        
+        <div class="toc">
+            <h2>목차</h2>
+            <ol>
+                <li>서비스 개요 (Executive Summary)</li>
+                <li>서비스 구성 및 아키텍처</li>
+                <li>메디컨텐츠 5대 핵심 가치</li>
+                <li>블로그 마케팅 전략의 핵심: 주제 클러스터</li>
+                <li>포스팅 계획 수립 프로세스</li>
+                <li>Two-Track 콘텐츠 전략</li>
+                <li>AI 기반 콘텐츠 생성 시스템</li>
+                <li>사용자 경험(UX) 설계</li>
+                <li>성과 측정 및 개선 체계</li>
+                <li>향후 로드맵</li>
+            </ol>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2>1. 서비스 개요 (Executive Summary)</h2>
+        
+        <h3>1.1 서비스의 비전과 미션</h3>
+        <p>우리 서비스는 병원의 온라인 마케팅을 '평판'과 '유입'이라는 두 가지 핵심 축으로 통합 관리하여, 병원이 온라인 환경에서 신뢰받는 브랜드를 구축하고 실제 환자 유치로 연결될 수 있도록 지원하는 것을 목표로 합니다. 특히 한국의 의료 시장 특성상 네이버를 중심으로 한 온라인 검색이 병원 선택의 주요 경로가 되고 있는 상황에서, 의료법을 준수하면서도 효과적인 마케팅을 수행할 수 있는 솔루션을 제공합니다.</p>
+        
+        <p>우리의 미션은 "의료법을 준수하면서도 효과적인 온라인 마케팅을 통해 병원과 환자를 연결하는 신뢰의 다리를 만드는 것"입니다. 이를 위해 리걸테크 전문성과 AI 기술, 그리고 데이터 분석 역량을 결합하여 병원이 안심하고 사용할 수 있는 마케팅 플랫폼을 구축했습니다.</p>
+        
+        <h3>1.2 우리 서비스의 차별화 포인트</h3>
+        <div class="highlight">
+            <h4>핵심 차별화 요소</h4>
+            <ul>
+                <li><strong>의료법 전문 변호사가 설립한 리걸테크 기업</strong>: 의료광고 심의 이슈를 사전에 차단하는 안전한 콘텐츠 생성</li>
+                <li><strong>평판과 유입의 통합 관리</strong>: 리뷰 관리와 블로그 마케팅을 하나의 플랫폼에서 종합적으로 관리</li>
+                <li><strong>AI 멀티 에이전트 시스템</strong>: 단일 AI가 아닌 전문화된 다중 에이전트를 통한 고품질 콘텐츠 생성</li>
+                <li><strong>데이터 기반 성과 예측</strong>: 검색량, 경쟁도 등을 분석한 과학적인 성과 예측 모델</li>
+                <li><strong>Two-Track 콘텐츠 전략</strong>: 유입과 전환을 분리한 체계적인 콘텐츠 운영</li>
+            </ul>
+        </div>
+        
+        <h3>1.3 평판과 유입을 통합 관리하는 서비스 구조</h3>
+        <p>병원의 온라인 마케팅 성공은 '얼마나 많은 사람들이 병원을 알게 되는가'와 '그들이 병원에 대해 어떻게 생각하는가'라는 두 가지 요소에 달려 있습니다. 우리 서비스는 이를 '유입'과 '평판'이라는 개념으로 정의하고, 두 요소를 유기적으로 연결하여 관리합니다.</p>
+        
+        <div class="service-box">
+            <h4>평판 관리 영역</h4>
+            <p>평판 관리는 온라인상에서 병원에 대한 고객의 의견과 경험을 수집, 분석, 대응하는 전 과정을 포함합니다. 네이버지도, 구글맵 등의 병원 채널 리뷰부터 네이버카페, 강남언니 등 커뮤니티 플랫폼의 게시글까지 광범위한 데이터를 수집하여 병원의 온라인 평판을 종합적으로 관리합니다. 특히 부정적인 리뷰나 게시글에 대한 신속한 대응과 긍정적인 리뷰 유도를 통해 병원의 신뢰도를 높입니다.</p>
+        </div>
+        
+        <div class="service-box">
+            <h4>유입 관리 영역</h4>
+            <p>유입 관리는 잠재 환자들이 병원을 발견하고 방문할 수 있도록 하는 모든 온라인 마케팅 활동을 포함합니다. 현재는 네이버 블로그와 병원 홈페이지 블로그를 중심으로 운영되며, 의료법 규제를 고려하여 채널을 이원화하여 운영합니다. SEO에 최적화된 콘텐츠를 통해 검색 상위 노출을 달성하고, 실제 예약으로 이어질 수 있는 신뢰성 있는 콘텐츠를 제공합니다.</p>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2>2. 서비스 구성 및 아키텍처</h2>
+        
+        <h3>2.1 전체 서비스 구조도</h3>
+        <p>우리 서비스는 크게 평판 관리와 유입 관리라는 두 개의 큰 축으로 구성되어 있으며, 각각의 영역에서 전문화된 서비스를 제공합니다. 이 두 영역은 독립적으로 운영되면서도 상호 보완적인 관계를 형성하여 시너지 효과를 창출합니다.</p>
+        
+        <div class="flow-chart">
+            <h4>병원 온라인 마케팅 통합 플랫폼</h4>
+            <div style="margin-top: 20px;">
+                <span class="flow-step">평판 관리</span>
+                <span class="arrow">+</span>
+                <span class="flow-step">유입 관리</span>
+                <span class="arrow">=</span>
+                <span class="flow-step">통합 대시보드</span>
+            </div>
+            <div style="margin-top: 30px;">
+                <div style="display: inline-block; text-align: left; margin: 0 30px;">
+                    <h5 style="color: #3498db;">평판 관리</h5>
+                    <ul style="list-style-type: disc;">
+                        <li>리뷰매니저</li>
+                        <li>리뷰부스터</li>
+                    </ul>
+                </div>
+                <div style="display: inline-block; text-align: left; margin: 0 30px;">
+                    <h5 style="color: #3498db;">유입 관리</h5>
+                    <ul style="list-style-type: disc;">
+                        <li>메디컨텐츠 (신규)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <h3>2.2 기존 서비스와의 연계</h3>
+        
+        <h4>리뷰매니저</h4>
+        <p>리뷰매니저는 병원에 대한 온라인 리뷰와 언급을 통합 관리하는 서비스입니다. 네이버지도, 구글맵 등 주요 플랫폼의 병원 리뷰를 실시간으로 수집하고, AI를 활용하여 감성을 분석합니다. 긍정적인 리뷰에는 감사 답글을, 부정적인 리뷰에는 신중하게 작성된 대응 답글을 자동으로 생성하여 제안합니다. 또한 네이버카페, 강남언니 등 커뮤니티 플랫폼에서 해당 병원이 언급된 게시글과 댓글을 수집하여 병원의 온라인 평판을 종합적으로 모니터링합니다.</p>
+        
+        <h4>리뷰부스터</h4>
+        <p>리뷰부스터는 병원을 방문한 환자들이 긍정적인 경험을 리뷰로 남길 수 있도록 유도하는 서비스입니다. QR코드, SMS, 이메일 등 다양한 채널을 통해 환자에게 리뷰 작성을 요청하고, 간편한 인터페이스를 제공하여 리뷰 작성의 허들을 낮춥니다. 이를 통해 자연스럽게 긍정적인 리뷰의 비율을 높이고 병원의 온라인 평판을 개선합니다.</p>
+        
+        <h3>2.3 신규 서비스(메디컨텐츠)의 위치와 역할</h3>
+        <p>메디컨텐츠는 병원의 블로그 마케팅을 체계적으로 관리하는 신규 서비스입니다. 기존의 평판 관리 서비스가 '사후 대응' 중심이었다면, 메디컨텐츠는 '사전 기획'을 통해 적극적으로 잠재 환자를 유입시키는 역할을 합니다. 특히 의료법을 준수하면서도 SEO에 최적화된 콘텐츠를 생성하여, 병원이 안심하고 온라인 마케팅을 수행할 수 있도록 지원합니다.</p>
+        
+        <div class="value-card">
+            <h4>메디컨텐츠의 핵심 역할</h4>
+            <ul>
+                <li><strong>데이터 기반 콘텐츠 기획</strong>: 검색 데이터 분석을 통한 전략적 콘텐츠 주제 선정</li>
+                <li><strong>AI 기반 콘텐츠 생성</strong>: 멀티 에이전트 시스템을 활용한 고품질 콘텐츠 자동 생성</li>
+                <li><strong>의료법 준수 검증</strong>: 모든 콘텐츠의 의료법 위반 요소 사전 차단</li>
+                <li><strong>성과 측정 및 최적화</strong>: 지속적인 모니터링과 개선을 통한 ROI 극대화</li>
+            </ul>
+        </div>
+        
+        <h3>2.4 페이지 구성 및 네비게이션 구조</h3>
+        <p>전체 서비스는 통합 대시보드를 중심으로 각 서비스별 상세 페이지로 이동할 수 있는 구조로 설계됩니다. 사용자는 한 화면에서 평판과 유입 현황을 종합적으로 파악하고, 필요에 따라 각 서비스의 상세 기능을 활용할 수 있습니다.</p>
+        
+        <div class="service-box">
+            <h4>주요 페이지 구성</h4>
+            <ul>
+                <li><strong>통합 대시보드</strong>: 평판과 유입 데이터를 한눈에 볼 수 있는 메인 화면</li>
+                <li><strong>리뷰매니저</strong>: 기존 서비스 화면 그대로 활용</li>
+                <li><strong>리뷰부스터</strong>: 기존 서비스 화면 그대로 활용</li>
+                <li><strong>메디컨텐츠</strong>:
+                    <ul>
+                        <li>대시보드: 블로그 유입 현황 상세 분석</li>
+                        <li>블로그 캠페인 관리: 2주 단위 캠페인 계획 및 성과 관리</li>
+                        <li>포스팅 관리: AI 생성 콘텐츠의 확인, 편집, 게시 관리</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2>3. 메디컨텐츠 5대 핵심 가치</h2>
+        
+        <p>메디컨텐츠는 병원 블로그 마케팅의 새로운 패러다임을 제시합니다. 단순히 콘텐츠를 생산하는 것을 넘어, 의료법 준수와 마케팅 효과를 동시에 달성하는 것을 목표로 합니다. 이를 위해 5가지 핵심 가치를 중심으로 서비스를 설계했습니다.</p>
+        
+        <h3>3.1 Legal (법적 안전성) ⭐⭐⭐</h3>
+        <div class="value-card">
+            <p>메디컨텐츠의 가장 중요한 차별화 포인트는 의료법 전문 변호사가 설립한 리걸테크 기업이라는 점입니다. 의료 광고는 일반 광고와 달리 엄격한 법적 규제를 받으며, 위반 시 행정처분과 함께 병원의 신뢰도에 치명적인 타격을 입을 수 있습니다.</p>
+            
+            <h4>구현 방법</h4>
+            <ul>
+                <li><strong>의료법 준수 AI 에이전트</strong>: 모든 콘텐츠를 의료법 관점에서 사전 검토하는 전담 AI 에이전트 운영</li>
+                <li><strong>금지 표현 데이터베이스</strong>: 의료광고 심의 기준에 따른 금지 표현을 체계적으로 관리</li>
+                <li><strong>채널별 차별화 전략</strong>: 네이버 블로그와 병원 홈페이지 블로그를 구분하여 규제 수준에 맞는 콘텐츠 배포</li>
+                <li><strong>실시간 법규 업데이트</strong>: 변경되는 의료광고 규정을 즉시 시스템에 반영</li>
+            </ul>
+        </div>
+        
+        <h3>3.2 SEO (검색 최적화) ⭐⭐⭐</h3>
+        <div class="value-card">
+            <p>아무리 좋은 콘텐츠도 검색 결과 상위에 노출되지 않으면 의미가 없습니다. 메디컨텐츠는 네이버 C-Rank 알고리즘을 깊이 있게 분석하여, 검색 상위 노출을 위한 최적화 전략을 수립합니다.</p>
+            
+            <h4>구현 방법</h4>
+            <ul>
+                <li><strong>실시간 상위 포스트 분석</strong>: 타겟 키워드의 현재 상위 노출 포스트를 분석하여 성공 패턴 도출</li>
+                <li><strong>형태소 최적화</strong>: 상위 포스트의 형태소 구성과 밀도를 분석하여 최적화된 콘텐츠 생성</li>
+                <li><strong>동적 제목 생성</strong>: 클릭률을 높이는 제목 패턴을 학습하여 적용</li>
+                <li><strong>구조화된 콘텐츠</strong>: 검색엔진이 선호하는 명확한 목차와 단락 구성</li>
+            </ul>
+        </div>
+        
+        <h3>3.3 Customization (맞춤화) ⭐⭐⭐</h3>
+        <div class="value-card">
+            <p>각 병원은 고유한 전문성과 차별점을 가지고 있습니다. 메디컨텐츠는 병원별 특성을 깊이 있게 분석하여, 해당 병원만의 강점이 돋보이는 맞춤형 콘텐츠를 생성합니다.</p>
+            
+            <h4>구현 방법</h4>
+            <ul>
+                <li><strong>병원 프로파일링</strong>: 진료과목, 의료진, 시설, 특화 치료법 등을 체계적으로 분석</li>
+                <li><strong>브랜드 톤앤매너 적용</strong>: 병원의 브랜드 아이덴티티에 맞는 문체와 표현 사용</li>
+                <li><strong>차별화 포인트 강조</strong>: 경쟁 병원과 구별되는 고유한 강점을 콘텐츠에 자연스럽게 녹여냄</li>
+                <li><strong>지역 특성 반영</strong>: 병원이 위치한 지역의 특성과 타겟 환자층을 고려한 콘텐츠 기획</li>
+            </ul>
+        </div>
+        
+        <h3>3.4 Automation (자동화) ⭐⭐</h3>
+        <div class="value-card">
+            <p>효율적인 콘텐츠 생산을 위해 AI 기술을 적극 활용합니다. 단, 완전 자동화보다는 인간의 검토와 AI의 효율성을 적절히 결합한 'Human-in-the-loop' 방식을 채택합니다.</p>
+            
+            <h4>구현 방법</h4>
+            <ul>
+                <li><strong>멀티 에이전트 시스템</strong>: 기획, 작성, 검수 등 각 단계별 전문 AI 에이전트 운영</li>
+                <li><strong>자동 데이터 수집</strong>: 검색 트렌드, 경쟁 콘텐츠 등을 자동으로 수집 및 분석</li>
+                <li><strong>반복 작업 자동화</strong>: SEO 최적화, 이미지 생성 등 반복적인 작업을 자동 처리</li>
+                <li><strong>스마트 워크플로우</strong>: 승인 프로세스를 간소화하여 빠른 콘텐츠 생산 가능</li>
+            </ul>
+        </div>
+        
+        <h3>3.5 Analytics (분석) ⭐⭐</h3>
+        <div class="value-card">
+            <p>데이터 기반의 의사결정을 통해 지속적으로 마케팅 성과를 개선합니다. 단순한 조회수를 넘어 실제 예약 전환까지 추적하여 ROI를 명확히 측정합니다.</p>
+            
+            <h4>구현 방법</h4>
+            <ul>
+                <li><strong>통합 대시보드</strong>: 유입량, 체류시간, 전환율 등 핵심 지표를 한눈에 확인</li>
+                <li><strong>A/B 테스트</strong>: 제목, 콘텐츠 구성 등을 실험하여 최적의 포맷 도출</li>
+                <li><strong>예측 모델링</strong>: 과거 데이터를 기반으로 신규 콘텐츠의 성과 예측</li>
+                <li><strong>실시간 모니터링</strong>: 발행 후 72시간 내 성과를 추적하여 필요시 즉시 개선</li>
+            </ul>
+        </div>
+        
+        <h3>3.6 리걸테크 기업으로서의 강점</h3>
+        <p>우리는 단순한 마케팅 에이전시가 아닌, 의료법에 대한 깊은 이해를 바탕으로 한 리걸테크 기업입니다. 이는 병원이 안심하고 온라인 마케팅을 수행할 수 있는 가장 큰 이유이며, 경쟁사와의 명확한 차별점입니다.</p>
+        
+        <div class="highlight">
+            <h4>리걸테크 전문성이 만드는 차이</h4>
+            <ul>
+                <li>의료광고 사전 심의 대상 여부를 정확히 판단하여 불필요한 심의 비용 절감</li>
+                <li>플랫폼별 규제 수준을 고려한 맞춤형 콘텐츠 전략 수립</li>
+                <li>의료법 위반 리스크를 사전에 차단하여 행정처분 위험 제거</li>
+                <li>법적 이슈 발생 시 즉각적인 대응 방안 제시</li>
+            </ul>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2>4. 블로그 마케팅 전략의 핵심: 주제 클러스터</h2>
+        
+        <p>효과적인 블로그 마케팅의 시작은 '무엇에 대해 쓸 것인가'를 전략적으로 결정하는 것입니다. 메디컨텐츠는 '주제 클러스터(Topic Cluster)' 개념을 도입하여, 병원의 특성에 맞는 체계적인 콘텐츠 전략을 수립합니다.</p>
+        
+        <h3>4.1 주제 클러스터 개념과 도출 방법론</h3>
+        <p>주제 클러스터란 병원이 타겟하는 잠재 환자들이 검색할 만한 키워드들을 의미 있는 그룹으로 묶은 것입니다. 각 병원은 진료과목, 주력 진료 항목, 의료진의 전문성, 시설의 특징 등에 따라 고유한 타겟 환자층을 가지고 있으며, 이들이 병원을 찾을 때 사용하는 검색어 패턴 역시 다릅니다.</p>
+        
+        <div class="service-box">
+            <h4>주제 클러스터 도출 프로세스</h4>
+            <ol>
+                <li><strong>병원 특성 분석</strong>: 진료과목, 의료진 전문성, 주력 시술, 차별화 요소 등을 종합적으로 분석</li>
+                <li><strong>기존 데이터 수집</strong>: 병원 홈페이지 콘텐츠, 기존 블로그 포스팅, 상담 내용 등에서 키워드 추출</li>
+                <li><strong>유입 데이터 분석</strong>: 네이버 블로그 통계에서 실제 유입을 일으킨 검색어 분석</li>
+                <li><strong>경쟁사 벤치마킹</strong>: 동일 지역, 동일 진료과목 병원들의 성공적인 키워드 전략 분석</li>
+                <li><strong>카테고리화</strong>: 수집된 키워드들을 의미와 검색 의도에 따라 10-15개 클러스터로 그룹화</li>
+                <li><strong>우선순위 설정</strong>: 검색량, 경쟁도, 전환 가능성 등을 고려하여 클러스터별 우선순위 결정</li>
+            </ol>
+        </div>
+        
+        <h3>4.2 검색 쿼리와의 계층 구조</h3>
+        <p>주제 클러스터는 상위 개념이며, 그 아래에는 실제로 사용자들이 검색창에 입력하는 구체적인 '검색 쿼리'들이 존재합니다. 이러한 계층 구조를 통해 체계적인 콘텐츠 관리가 가능합니다.</p>
+        
+        <div class="flow-chart">
+            <h4>주제 클러스터 계층 구조</h4>
+            <div style="text-align: left; margin-top: 20px;">
+                <div style="margin-left: 20px;">
+                    <strong>주제 클러스터</strong> (예: 신경치료/근관치료 클러스터)
+                    <div style="margin-left: 40px; margin-top: 10px;">
+                        ↳ <strong>검색 쿼리 1</strong>: "동탄 신경치료 잘하는 곳"
+                    </div>
+                    <div style="margin-left: 40px; margin-top: 5px;">
+                        ↳ <strong>검색 쿼리 2</strong>: "앞니 신경치료 비용"
+                    </div>
+                    <div style="margin-left: 40px; margin-top: 5px;">
+                        ↳ <strong>검색 쿼리 3</strong>: "신경치료 후 통증 원인"
+                    </div>
+                    <div style="margin-left: 40px; margin-top: 5px;">
+                        ↳ <strong>검색 쿼리 4</strong>: "재신경치료 필요한 경우"
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <p>이러한 구조의 장점은 주제 클러스터 단위로 성과를 측정하고 관리할 수 있다는 점입니다. 개별 검색 쿼리의 성과를 클러스터 단위로 롤업(roll-up)하여, 어떤 치료 영역에서 온라인 마케팅이 잘 되고 있는지, 어떤 영역이 보강이 필요한지를 한눈에 파악할 수 있습니다.</p>
+        
+        <h3>4.3 실제 사례: 치과 병원 10개 클러스터</h3>
+        <p>실제 치과 병원의 사례를 통해 주제 클러스터가 어떻게 구성되는지 살펴보겠습니다. 이 치과는 보존과 전문의가 있는 종합 치과로, 기존 홈페이지와 블로그 데이터를 분석하여 다음과 같은 10개의 주제 클러스터를 도출했습니다.</p>
+        
+        <div class="cluster-example">
+            <h4>1. 신경치료/근관치료 클러스터</h4>
+            <ul>
+                <li>병원의 핵심 전문 분야 (보존과 전문의 보유)</li>
+                <li>블로그 유입 키워드에서 가장 높은 비중 차지</li>
+                <li>재신경치료, 미세현미경 신경치료 등 세부 전문성 포함</li>
+                <li>주요 검색 쿼리: "신경치료 통증", "신경치료 기간", "재신경치료 비용" 등</li>
+            </ul>
+        </div>
+        
+        <div class="cluster-example">
+            <h4>2. 충치치료 클러스터</h4>
+            <ul>
+                <li>가장 기본적이면서도 검색량이 많은 치과 진료</li>
+                <li>레진, 인레이 등 보존적 치료 방법 포함</li>
+                <li>자연치 보존 철학과 연계하여 차별화</li>
+                <li>주요 검색 쿼리: "충치치료 비용", "레진 vs 인레이", "충치 자가진단" 등</li>
+            </ul>
+        </div>
+        
+        <div class="cluster-example">
+            <h4>3. 임플란트 클러스터</h4>
+            <ul>
+                <li>고가 치료로 정보 검색이 활발한 영역</li>
+                <li>앞니/어금니별 특성, 뼈이식, 상악동거상술 등 세부 시술 포함</li>
+                <li>주요 검색 쿼리: "임플란트 가격", "임플란트 부작용", "임플란트 수명" 등</li>
+            </ul>
+        </div>
+        
+        <div class="cluster-example">
+            <h4>4. 앞니치료 클러스터</h4>
+            <ul>
+                <li>심미적 요소가 중요한 치료 영역</li>
+                <li>앞니 레진, 라미네이트, 크라운 등 다양한 치료법 포함</li>
+                <li>주요 검색 쿼리: "앞니 깨짐", "앞니 벌어짐", "앞니 변색" 등</li>
+            </ul>
+        </div>
+        
+        <div class="cluster-example">
+            <h4>5. 치주질환 클러스터</h4>
+            <ul>
+                <li>잇몸 관련 모든 질환과 치료법 포함</li>
+                <li>스케일링부터 잇몸수술까지 광범위한 스펙트럼</li>
+                <li>주요 검색 쿼리: "잇몸 염증", "치은염 치료", "잇몸 내려앉음" 등</li>
+            </ul>
+        </div>
+        
+        <div class="cluster-example">
+            <h4>6. 급성 치과질환 클러스터</h4>
+            <ul>
+                <li>갑작스러운 통증으로 즉시 치료가 필요한 경우</li>
+                <li>응급 진료 가능 여부가 중요한 차별화 포인트</li>
+                <li>주요 검색 쿼리: "급성 치수염", "치통 응급처치", "밤에 치아 통증" 등</li>
+            </ul>
+        </div>
+        
+        <div class="cluster-example">
+            <h4>7. 정기검진/예방치료 클러스터</h4>
+            <ul>
+                <li>예방 중심 진료 철학을 강조</li>
+                <li>정기적인 관리의 중요성 교육</li>
+                <li>주요 검색 쿼리: "치과 정기검진 주기", "스케일링 보험", "구강검진" 등</li>
+            </ul>
+        </div>
+        
+        <div class="cluster-example">
+            <h4>8. 심미치료 클러스터</h4>
+            <ul>
+                <li>치아 미백, 잇몸 성형 등 심미 목적 치료</li>
+                <li>젊은 층의 관심이 높은 영역</li>
+                <li>주요 검색 쿼리: "치아 미백 가격", "잇몸 성형", "블랙트라이앵글" 등</li>
+            </ul>
+        </div>
+        
+        <div class="cluster-example">
+            <h4>9. 재치료/2차 치료 클러스터</h4>
+            <ul>
+                <li>타 병원 치료 실패 케이스 해결</li>
+                <li>높은 전문성이 요구되는 영역으로 차별화 가능</li>
+                <li>주요 검색 쿼리: "재신경치료 전문", "임플란트 재수술", "크라운 재치료" 등</li>
+            </ul>
+        </div>
+        
+        <div class="cluster-example">
+            <h4>10. 지역 기반 검색 클러스터</h4>
+            <ul>
+                <li>지역명과 결합된 모든 검색어</li>
+                <li>로컬 SEO의 핵심 영역</li>
+                <li>주요 검색 쿼리: "동탄 치과", "동탄역 치과 추천", "화성 임플란트" 등</li>
+            </ul>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2>5. 포스팅 계획 수립 프로세스</h2>
+        
+        <p>포스팅 계획은 단순히 '무엇을 쓸 것인가'를 정하는 것이 아니라, 데이터에 기반하여 최대의 마케팅 효과를 낼 수 있는 전략적 의사결정 과정입니다. 메디컨텐츠는 체계적인 프로세스를 통해 각 병원에 최적화된 포스팅 계획을 수립합니다.</p>
+        
+        <h3>5.1 유입량 저성과 주제 클러스터에 대한 포스팅 생성 전략</h3>
+        <p>포스팅 계획의 핵심은 '선택과 집중'입니다. 모든 주제 클러스터에 균등하게 리소스를 배분하는 것이 아니라, 현재 성과가 목표 대비 부진한 클러스터를 식별하여 집중적으로 개선하는 전략을 취합니다.</p>
+        
+        <div class="service-box">
+            <h4>저성과 클러스터 식별 프로세스</h4>
+            <ol>
+                <li><strong>현재 성과 측정</strong>
+                    <ul>
+                        <li>네이버 블로그 통계에서 각 검색 쿼리별 실제 유입량 수집</li>
+                        <li>검색 쿼리를 주제 클러스터별로 매핑하여 클러스터 단위 유입량 집계</li>
+                        <li>최근 3개월간의 추세 분석으로 성장/정체/하락 여부 파악</li>
+                    </ul>
+                </li>
+                <li><strong>목표 설정</strong>
+                    <ul>
+                        <li>각 클러스터별 시장 잠재력(검색량) 분석</li>
+                        <li>경쟁 강도와 현재 블로그 파워를 고려한 현실적 목표 수립</li>
+                        <li>병원의 전략적 중요도를 반영한 가중치 적용</li>
+                    </ul>
+                </li>
+                <li><strong>갭 분석</strong>
+                    <ul>
+                        <li>목표 대비 현재 성과의 달성률 계산</li>
+                        <li>달성률이 낮은 순서대로 우선순위 설정</li>
+                        <li>개선 잠재력(목표-현재)이 큰 클러스터 우선 선정</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        
+        <h3>5.2 주제 클러스터 성과 측정 및 목표 설정 프로세스</h3>
+        <p>효과적인 목표 설정을 위해서는 먼저 각 주제 클러스터가 가진 잠재력을 정확히 평가해야 합니다. 이를 위해 메디컨텐츠는 정교한 3단계 프로세스를 운영합니다.</p>
+        
+        <h4>Step 1: 검색 쿼리 풀(Pool) 구축</h4>
+        <p>각 주제 클러스터별로 200개의 관련 검색 쿼리를 수집합니다. 이는 현재 사용 중인 키워드뿐만 아니라 잠재적으로 활용 가능한 모든 키워드를 포함합니다.</p>
+        
+        <div class="flow-chart">
+            <h4>검색 쿼리 200개 수집 방법</h4>
+            <div style="text-align: left; margin: 20px;">
+                <div style="background-color: #e8f4f8; padding: 15px; margin: 10px 0; border-radius: 5px;">
+                    <strong>A. 현재 유입 쿼리 (50개)</strong><br>
+                    네이버 블로그 통계에서 실제 유입을 발생시킨 검색어 추출
+                </div>
+                <div style="background-color: #f0e8f8; padding: 15px; margin: 10px 0; border-radius: 5px;">
+                    <strong>B. 경쟁사 성공 쿼리 (50개)</strong><br>
+                    A의 쿼리로 검색 시 상위 노출되는 경쟁 블로그에서 활용한 키워드 분석
+                </div>
+                <div style="background-color: #f8e8e8; padding: 15px; margin: 10px 0; border-radius: 5px;">
+                    <strong>C. 연관 키워드 확장 (100개)</strong><br>
+                    A+B에서 도출된 100개 키워드의 연관 검색어 및 자동완성 키워드 수집
+                </div>
+            </div>
+        </div>
+        
+        <h4>Step 2: 기대 유입량 산정</h4>
+        <p>수집된 200개 검색 쿼리 각각에 대해 '기대 유입량'을 계산합니다. 이는 해당 키워드로 콘텐츠를 작성했을 때 예상되는 월간 유입 방문자 수를 의미합니다.</p>
+        
+        <table class="comparison-table">
+            <tr>
+                <th>데이터 유형</th>
+                <th>수집 방법</th>
+                <th>활용 방식</th>
+            </tr>
+            <tr>
+                <td>월간 검색량</td>
+                <td>네이버 키워드 플래너, 검색어 트렌드</td>
+                <td>시장 규모 파악, 잠재 트래픽 계산</td>
+            </tr>
+            <tr>
+                <td>블로그 발행량</td>
+                <td>해당 키워드의 월간 신규 포스트 수</td>
+                <td>경쟁 강도 평가, 진입 난이도 판단</td>
+            </tr>
+            <tr>
+                <td>경쟁 난이도</td>
+                <td>상위 10개 포스트의 품질 점수 분석</td>
+                <td>필요한 콘텐츠 품질 수준 결정</td>
+            </tr>
+            <tr>
+                <td>예상 순위</td>
+                <td>현재 블로그 파워와 과거 성과 기반 예측</td>
+                <td>실제 노출 가능성 반영</td>
+            </tr>
+            <tr>
+                <td>클릭률(CTR)</td>
+                <td>순위별 평균 클릭률 벤치마크</td>
+                <td>검색 노출을 실제 유입으로 전환</td>
+            </tr>
+        </table>
+        
+        <h4>Step 3: 클러스터별 목표 설정</h4>
+        <p>각 주제 클러스터에서 기대 유입량이 높은 상위 10개 검색 쿼리를 선정하고, 이들의 기대 유입량 합계를 해당 클러스터의 목표로 설정합니다.</p>
+        
+        <div class="highlight">
+            <h4>목표 설정 예시: 신경치료/근관치료 클러스터</h4>
+            <ul>
+                <li>검색 쿼리 풀: 200개</li>
+                <li>상위 10개 쿼리 기대 유입량 합계: 월 5,000명</li>
+                <li>현재 실제 유입량: 월 2,000명</li>
+                <li>목표 달성률: 40%</li>
+                <li>개선 잠재력: 월 3,000명 추가 유입 가능</li>
+            </ul>
+        </div>
+        
+        <h3>5.3 유입량 예측 모델 개발 방안</h3>
+        <p>정확한 유입량 예측은 효과적인 포스팅 계획의 핵심입니다. 메디컨텐츠는 머신러닝 기반의 예측 모델을 개발하여 각 검색 쿼리의 기대 성과를 과학적으로 산출합니다.</p>
+        
+        <div class="value-card">
+            <h4>유입량 예측 모델 구조</h4>
+            <p><strong>Input Variables (입력 변수)</strong></p>
+            <ul>
+                <li>검색량: 월간 검색 횟수</li>
+                <li>경쟁도: 키워드 광고 경쟁 지수</li>
+                <li>블로그 발행량: 최근 30일간 발행된 포스트 수</li>
+                <li>상위 포스트 품질: 상위 10개 포스트의 평균 길이, 이미지 수, 체류시간</li>
+                <li>블로그 파워: 현재 블로그의 일평균 방문자, 구독자 수, 평균 순위</li>
+                <li>시즈널리티: 계절성 지수 (치과의 경우 연말 높음)</li>
+            </ul>
+            
+            <p><strong>Model Architecture (모델 구조)</strong></p>
+            <ul>
+                <li>기본 모델: Random Forest Regression</li>
+                <li>학습 데이터: 과거 6개월간 발행 포스트의 실제 성과</li>
+                <li>검증 방법: 5-fold Cross Validation</li>
+                <li>성능 지표: RMSE, MAE, R-squared</li>
+            </ul>
+            
+            <p><strong>Output (출력)</strong></p>
+            <ul>
+                <li>예상 월간 유입량 (점추정)</li>
+                <li>신뢰구간 (상위 25%, 하위 25%)</li>
+                <li>순위 달성 확률 분포</li>
+            </ul>
+        </div>
+        
+        <p>이 예측 모델은 지속적으로 새로운 데이터를 학습하여 정확도를 개선합니다. 특히 각 병원의 고유한 특성(지역, 전문 분야, 브랜드 파워 등)을 반영한 맞춤형 모델로 진화하여, 시간이 지날수록 더욱 정확한 예측이 가능해집니다.</p>
+
+        <div class="page-break"></div>
+
+        <h2>6. Two-Track 콘텐츠 전략</h2>
+        
+        <p>메디컨텐츠의 가장 혁신적인 전략 중 하나는 '유입 포스팅'과 '전환 포스팅'을 구분하여 운영하는 Two-Track 시스템입니다. 이는 단순히 많은 사람을 유입시키는 것과 실제로 병원 예약으로 전환시키는 것이 서로 다른 접근법을 필요로 한다는 인사이트에서 출발했습니다.</p>
+        
+        <h3>6.1 유입 포스팅과 전환 포스팅의 정의와 목적</h3>
+        
+        <div class="comparison-table">
+            <tr>
+                <th>구분</th>
+                <th>유입 포스팅</th>
+                <th>전환 포스팅</th>
+            </tr>
+            <tr>
+                <td><strong>주요 목적</strong></td>
+                <td>검색 상위 노출을 통한 대량 트래픽 확보</td>
+                <td>신뢰 구축을 통한 실제 예약 전환</td>
+            </tr>
+            <tr>
+                <td><strong>타겟 독자</strong></td>
+                <td>정보 탐색 단계의 잠재 환자</td>
+                <td>병원 선택을 고민하는 구매 결정 단계 환자</td>
+            </tr>
+            <tr>
+                <td><strong>콘텐츠 특성</strong></td>
+                <td>SEO 최적화, 정보 제공 중심</td>
+                <td>감성적 스토리텔링, 신뢰성 강조</td>
+            </tr>
+            <tr>
+                <td><strong>주요 지표</strong></td>
+                <td>검색 순위, 유입량, 체류시간</td>
+                <td>전환율, 문의/예약 수, 재방문율</td>
+            </tr>
+            <tr>
+                <td><strong>작성 방식</strong></td>
+                <td>데이터 기반 자동 생성</td>
+                <td>실제 사례 기반 맞춤 제작</td>
+            </tr>
+        </table>
+        
+        <h3>6.2 각 포스팅 유형의 특징과 차별점</h3>
+        
+        <h4>유입 포스팅의 특징</h4>
+        <div class="service-box">
+            <p>유입 포스팅은 철저히 SEO에 최적화되어 검색 결과 상위에 노출되는 것을 목표로 합니다. 이를 위해 다음과 같은 특징을 갖습니다:</p>
+            
+            <ul>
+                <li><strong>키워드 최적화</strong>: 타겟 검색어를 제목과 본문에 자연스럽게 배치하여 검색엔진이 쉽게 인식할 수 있도록 구성</li>
+                <li><strong>구조화된 정보 제공</strong>: 명확한 목차와 단락 구분으로 독자가 원하는 정보를 빠르게 찾을 수 있도록 구성</li>
+                <li><strong>트렌드 반영</strong>: 현재 검색 상위에 노출되는 콘텐츠의 특징을 분석하여 성공 패턴을 반영</li>
+                <li><strong>다양한 형식 활용</strong>: 리스트, FAQ, 비교표 등 검색엔진과 독자 모두가 선호하는 형식 적극 활용</li>
+                <li><strong>빠른 생산 주기</strong>: AI를 활용한 자동 생성으로 트렌드 변화에 신속하게 대응</li>
+            </ul>
+            
+            <div class="highlight">
+                <h5>유입 포스팅 예시 주제</h5>
+                <ul>
+                    <li>"임플란트 수술 후 주의사항 완벽 가이드"</li>
+                    <li>"충치 단계별 치료방법과 비용 총정리"</li>
+                    <li>"잇몸병 자가진단 체크리스트 10가지"</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h4>전환 포스팅의 특징</h4>
+        <div class="service-box">
+            <p>전환 포스팅은 이미 유입된 독자를 실제 환자로 전환시키는 것을 목표로 하며, 다음과 같은 특징을 갖습니다:</p>
+            
+            <ul>
+                <li><strong>실제 치료 사례</strong>: 구체적인 환자의 치료 전후 스토리를 중심으로 구성하여 공감과 신뢰 형성</li>
+                <li><strong>의료진 전문성 강조</strong>: 치료 과정에서 의료진의 전문적 판단과 섬세한 배려를 자연스럽게 노출</li>
+                <li><strong>시각적 증거 제시</strong>: Before/After 사진, 치료 과정 이미지 등을 통해 결과를 직관적으로 전달</li>
+                <li><strong>감성적 스토리텔링</strong>: 환자의 고민, 치료 결정 과정, 치료 후 만족감 등 감정적 여정을 상세히 묘사</li>
+                <li><strong>차별화 요소 부각</strong>: 타 병원과 구별되는 치료 철학, 시설, 기술력 등을 사례 속에 자연스럽게 녹여냄</li>
+            </ul>
+            
+            <div class="highlight">
+                <h5>전환 포스팅 예시 주제</h5>
+                <ul>
+                    <li>"10년간의 치과 공포증을 극복한 김○○님의 임플란트 치료기"</li>
+                    <li>"앞니 사고로 좌절했던 대학생, 미소를 되찾기까지의 6개월"</li>
+                    <li>"재신경치료 3번 실패 후 찾아온 희망: 미세현미경 치료 성공기"</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>6.3 상호 연결 전략과 시너지 효과</h3>
+        <p>Two-Track 전략의 핵심은 두 유형의 포스팅이 독립적으로 운영되는 것이 아니라, 유기적으로 연결되어 시너지를 창출한다는 점입니다.</p>
+        
+        <div class="flow-chart">
+            <h4>유입-전환 포스팅 연결 구조</h4>
+            <div style="text-align: center; margin: 20px 0; display: flex; align-items: center; justify-content: center;">
+                <div style="padding: 20px; background-color: #e3f2fd; border-radius: 10px; margin: 10px;">
+                    <strong>유입 포스팅</strong><br>
+                    "임플란트 종류와 선택 기준"
+                </div>
+                <span style="font-size: 2em; color: #3498db; margin: 0 10px;">→</span>
+                <div style="padding: 20px; background-color: #fce4ec; border-radius: 10px; margin: 10px;">
+                    <strong>전환 포스팅</strong><br>
+                    "내게 맞는 임플란트를 찾은 과정"
+                </div>
+                <span style="font-size: 2em; color: #e91e63; margin: 0 10px;">→</span>
+                <div style="padding: 20px; background-color: #e8f5e9; border-radius: 10px; margin: 10px;">
+                    <strong>예약/상담</strong><br>
+                    실제 환자 전환
+                </div>
+            </div>
+        </div>
+        
+        <div class="service-box">
+            <h4>연결 전략의 구체적 방법</h4>
+            <ol>
+                <li><strong>맥락적 링크 삽입</strong>
+                    <ul>
+                        <li>유입 포스팅의 적절한 위치에 관련 전환 포스팅 링크를 자연스럽게 삽입</li>
+                        <li>예: "임플란트 종류에 대해 알아봤다면, 실제 환자분이 어떻게 선택했는지 <a href='#'>이 사례</a>를 참고하세요"</li>
+                    </ul>
+                </li>
+                <li><strong>단계별 콘텐츠 설계</strong>
+                    <ul>
+                        <li>정보 탐색 → 옵션 비교 → 사례 확인 → 병원 선택의 구매 여정에 맞춰 콘텐츠 배치</li>
+                        <li>각 단계에서 다음 단계로 자연스럽게 유도하는 CTA(Call-to-Action) 포함</li>
+                    </ul>
+                </li>
+                <li><strong>주제 연관성 강화</strong>
+                    <ul>
+                        <li>동일한 주제 클러스터 내에서 유입-전환 포스팅을 쌍으로 기획</li>
+                        <li>독자가 정보를 얻은 후 바로 관련 사례를 확인할 수 있도록 구성</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        
+        <h3>6.4 2주 단위 캠페인 구성 방법</h3>
+        <p>메디컨텐츠는 2주를 하나의 캠페인 단위로 설정하여 체계적인 콘텐츠 운영을 지원합니다. 이는 너무 짧지도, 길지도 않은 최적의 운영 주기로, 일관성 있는 콘텐츠 생산과 유연한 전략 조정을 가능하게 합니다.</p>
+        
+        <div class="value-card">
+            <h4>2주 캠페인 구성</h4>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-top: 15px;">
+                <h5>총 6-7개 포스팅</h5>
+                <ul>
+                    <li><strong>유입 포스팅: 3-4개</strong>
+                        <ul>
+                            <li>주 2회 발행 (화요일, 목요일 권장)</li>
+                            <li>저성과 클러스터의 고가치 키워드 타겟팅</li>
+                            <li>다양한 포맷 활용 (가이드, 리스트, FAQ 등)</li>
+                        </ul>
+                    </li>
+                    <li><strong>전환 포스팅: 2-3개</strong>
+                        <ul>
+                            <li>주 1-2회 발행 (수요일, 금요일 권장)</li>
+                            <li>유입 포스팅과 연관된 실제 치료 사례</li>
+                            <li>스토리텔링 형식 통일</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="service-box">
+            <h4>캠페인 운영 프로세스</h4>
+            <ol>
+                <li><strong>캠페인 기획 (Day 1-2)</strong>
+                    <ul>
+                        <li>저성과 주제 클러스터 분석 및 선정</li>
+                        <li>타겟 검색 쿼리 리스트 작성</li>
+                        <li>유입-전환 포스팅 매칭 계획 수립</li>
+                    </ul>
+                </li>
+                <li><strong>콘텐츠 생성 (Day 3-5)</strong>
+                    <ul>
+                        <li>AI 멀티 에이전트를 활용한 초안 생성</li>
+                        <li>의료법 검토 및 수정</li>
+                        <li>병원 고유 정보 추가 및 맞춤화</li>
+                    </ul>
+                </li>
+                <li><strong>검토 및 승인 (Day 6-7)</strong>
+                    <ul>
+                        <li>병원 담당자 검토 및 피드백</li>
+                        <li>최종 수정 및 승인</li>
+                        <li>발행 일정 확정</li>
+                    </ul>
+                </li>
+                <li><strong>순차적 발행 (Day 8-21)</strong>
+                    <ul>
+                        <li>계획된 일정에 따라 순차적 발행</li>
+                        <li>발행 직후 기술적 SEO 체크</li>
+                        <li>소셜 미디어 연동 배포</li>
+                    </ul>
+                </li>
+                <li><strong>성과 모니터링 (Day 22-28)</strong>
+                    <ul>
+                        <li>검색 순위 및 유입량 추적</li>
+                        <li>전환 지표 분석</li>
+                        <li>다음 캠페인을 위한 인사이트 도출</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2>7. AI 기반 콘텐츠 생성 시스템</h2>
+        
+        <p>메디컨텐츠의 핵심 경쟁력은 단일 AI가 아닌 전문화된 멀티 에이전트 시스템을 통해 고품질 콘텐츠를 생성한다는 점입니다. 각 에이전트는 특정 역할에 최적화되어 있으며, 상호 협력을 통해 인간 전문가 팀과 유사한 수준의 콘텐츠를 생산합니다.</p>
+        
+        <h3>7.1 멀티 에이전트 시스템 아키텍처</h3>
+        <p>멀티 에이전트 시스템은 계층적 구조로 설계되어, 각 단계별로 전문화된 작업을 수행합니다. 최상위에는 전체 프로세스를 관리하는 Supervisor 에이전트가 있고, 그 아래에 5개의 전문 팀이 구성되어 있습니다.</p>
+        
+        <div class="agent-structure">
+            <pre style="text-align: center; line-height: 1.8;">
+                          [Supervisor 에이전트]
+                                   │
+            ┌─────────┬─────────┬─────────┼─────────┬─────────┐
+            │         │         │         │         │         │
+        [기획 팀장] [콘텐츠 팀장] [이미지 팀장] [평가 팀장] [의료법 팀장]
+            │         │         │         │         │
+        [팀원들...] [팀원들...] [팀원들...] [팀원들...] [팀원들...]
+            </pre>
+        </div>
+        
+        <div class="service-box">
+            <h4>Supervisor 에이전트의 역할</h4>
+            <ul>
+                <li>전체 콘텐츠 생성 프로세스의 오케스트레이션</li>
+                <li>각 팀 간의 작업 조율 및 일정 관리</li>
+                <li>품질 기준 미달 시 재작업 지시</li>
+                <li>최종 콘텐츠 승인 및 출력</li>
+            </ul>
+        </div>
+        
+        <h3>7.2 유입 포스팅 생성 프로세스 상세</h3>
+        <p>유입 포스팅은 SEO 최적화가 핵심이므로, 데이터 분석과 최적화에 특화된 에이전트들이 주도적으로 작업을 수행합니다.</p>
+        
+        <h4>기획팀의 작업 프로세스</h4>
+        <div class="value-card">
+            <h5>기획 팀장 에이전트</h5>
+            <p>선정된 검색 쿼리와 상위 노출 포스트 데이터를 종합적으로 분석하여 포스팅 방향을 결정합니다.</p>
+            
+            <h5>검색쿼리 적용 전문 팀원</h5>
+            <ul>
+                <li><strong>Input</strong>: 타겟 검색 쿼리, 해당 쿼리의 현재 상위 10개 포스트</li>
+                <li><strong>분석 내용</strong>:
+                    <ul>
+                        <li>상위 포스트들의 공통 주제와 접근 방식</li>
+                        <li>독자들이 선호하는 정보의 깊이와 범위</li>
+                        <li>차별화 가능한 포인트 발견</li>
+                    </ul>
+                </li>
+                <li><strong>Output</strong>: 3-5개의 포스팅 아이디어와 각각의 예상 성과</li>
+            </ul>
+            
+            <h5>개요 설계 팀원</h5>
+            <ul>
+                <li><strong>목차 구성 전략</strong>:
+                    <ul>
+                        <li>상위 포스트 목차 구조 분석 → 성공 패턴 추출</li>
+                        <li>독자 니즈에 맞는 정보 배치 순서 결정</li>
+                        <li>스캔 가능성을 높이는 소제목 작성</li>
+                    </ul>
+                </li>
+                <li><strong>후킹 전략</strong>:
+                    <ul>
+                        <li>첫 문단에서 독자의 고민 포인트 정확히 짚기</li>
+                        <li>읽기를 계속하게 만드는 궁금증 유발</li>
+                        <li>콘텐츠의 가치를 미리 제시</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <h4>콘텐츠팀의 작업 프로세스</h4>
+        <div class="value-card">
+            <h5>제목 최적화 팀원</h5>
+            <table class="comparison-table">
+                <tr>
+                    <th>최적화 요소</th>
+                    <th>적용 방법</th>
+                    <th>예시</th>
+                </tr>
+                <tr>
+                    <td>키워드 배치</td>
+                    <td>핵심 키워드를 제목 앞부분에 자연스럽게 배치</td>
+                    <td>"임플란트 비용, 2024년 최신 가격 총정리"</td>
+                </tr>
+                <tr>
+                    <td>숫자 활용</td>
+                    <td>구체적인 숫자로 신뢰도와 클릭률 향상</td>
+                    <td>"충치 치료 7단계 완벽 가이드"</td>
+                </tr>
+                <tr>
+                    <td>감정 유발</td>
+                    <td>독자의 고민이나 욕구를 자극하는 표현</td>
+                    <td>"더 이상 미루면 안 되는 잇몸치료 신호 5가지"</td>
+                </tr>
+                <tr>
+                    <td>길이 최적화</td>
+                    <td>25-35자 내외로 모바일 환경 고려</td>
+                    <td>검색 결과에서 잘리지 않는 길이</td>
+                </tr>
+            </table>
+            
+            <h5>본문 작성 팀원</h5>
+            <ul>
+                <li><strong>도입부 작성 (첫 100자)</strong>:
+                    <ul>
+                        <li>핵심 키워드 2회 이상 자연스럽게 포함</li>
+                        <li>독자의 검색 의도에 정확히 부합하는 내용</li>
+                        <li>전체 콘텐츠의 요약 제시</li>
+                    </ul>
+                </li>
+                <li><strong>본문 구성</strong>:
+                    <ul>
+                        <li>한 문단 3-4문장으로 가독성 확보</li>
+                        <li>전문 용어는 쉬운 설명과 함께 제시</li>
+                        <li>불필요한 의료 전문용어 남용 자제</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h5>SEO 최적화 팀원</h5>
+            <div class="highlight">
+                <h6>형태소 최적화 프로세스</h6>
+                <ol>
+                    <li>상위 10개 포스트의 형태소 분석
+                        <ul>
+                            <li>명사, 동사, 형용사 비율 파악</li>
+                            <li>핵심 키워드의 변형 패턴 분석</li>
+                            <li>연관 키워드 출현 빈도 측정</li>
+                        </ul>
+                    </li>
+                    <li>최적 형태소 구성 도출
+                        <ul>
+                            <li>핵심 키워드: 전체 텍스트의 2-3%</li>
+                            <li>연관 키워드: 전체 텍스트의 3-5%</li>
+                            <li>자연스러운 문맥 내 배치</li>
+                        </ul>
+                    </li>
+                    <li>콘텐츠 재구성
+                        <ul>
+                            <li>키워드 밀도 조정</li>
+                            <li>문장 구조 최적화</li>
+                            <li>메타 정보 생성</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        
+        <h4>평가팀의 작업 프로세스</h4>
+        <div class="service-box">
+            <h5>SEO 평가 항목</h5>
+            <ul>
+                <li>제목의 키워드 포함 여부 및 위치</li>
+                <li>메타 디스크립션의 적절성</li>
+                <li>본문 내 키워드 밀도 (2-3% 권장)</li>
+                <li>내부/외부 링크 구조</li>
+                <li>이미지 alt 텍스트 최적화</li>
+                <li>콘텐츠 길이 (최소 1,500자 이상)</li>
+                <li>가독성 점수 (문장 길이, 단락 구분 등)</li>
+            </ul>
+            
+            <h5>평가 결과 처리</h5>
+            <p>각 항목별로 점수를 매기고, 기준 미달 항목에 대해서는 구체적인 개선 방안을 제시합니다. 
+            Supervisor는 이를 바탕으로 해당 팀에게 수정을 지시하며, 모든 항목이 기준을 충족할 때까지 반복합니다.</p>
+        </div>
+        
+        네, 이해했습니다. 전환 포스팅 관련 수정사항을 반영하여 해당 부분의 HTML 코드를 제공하겠습니다.
+
+```html
+<h3>7.3 전환 포스팅 생성 프로세스 상세</h3>
+<p>전환 포스팅은 특정 치료에 대한 전문성 있는 정보를 환자가 이해하기 쉽게 전달하는 것이 핵심입니다. 치료 의사의 관점에서 환자들이 궁금해하는 정보를 체계적으로 제공합니다.</p>
+
+<h4>기획팀의 차별화된 접근</h4>
+<div class="value-card">
+    <h5>전환 포스팅 기획 프로세스</h5>
+    <ul>
+        <li><strong>검색 쿼리 기반 기획</strong>:
+            <ul>
+                <li>유입 포스팅과 연계된 검색 쿼리 분석</li>
+                <li>해당 치료를 고민하는 환자들의 정보 니즈 파악</li>
+                <li>병원에 적합한 전환 포스팅 주제 제안</li>
+            </ul>
+        </li>
+        <li><strong>병원의 사례 선정</strong>:
+            <ul>
+                <li>제안된 주제에 맞는 치료 사례를 병원이 직접 선정</li>
+                <li>해당 치료의 전문성을 잘 보여줄 수 있는 케이스 선택</li>
+                <li>환자 동의를 받은 실제 치료 데이터 활용</li>
+            </ul>
+        </li>
+        <li><strong>핵심 정보 구성</strong>:
+            <ul>
+                <li>치료 과정의 단계별 상세 설명</li>
+                <li>예상 치료 기간 및 회복 과정</li>
+                <li>치료 전후 주의사항 및 관리법</li>
+                <li>객관적인 치료 효과 및 예후</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+    <h4>콘텐츠팀의 전문 정보 전달 프로세스</h4>
+    <div class="value-card">
+        <h5>의사 관점 콘텐츠 작성</h5>
+        
+        <h6>1. 정보 구조화</h6>
+        <div class="flow-chart">
+            <div style="text-align: center; display: flex; align-items: center; justify-content: center;">
+                <span class="flow-step">진단/평가</span>
+                <span class="arrow" style="margin: 0 10px;">→</span>
+                <span class="flow-step">치료 계획</span>
+                <span class="arrow" style="margin: 0 10px;">→</span>
+                <span class="flow-step">치료 과정</span>
+                <span class="arrow" style="margin: 0 10px;">→</span>
+                <span class="flow-step">결과/예후</span>
+            </div>
+        </div>
+        
+        <h6>2. 전문 정보 전달 기법</h6>
+        <ul>
+            <li><strong>의학적 설명의 대중화</strong>: "이 환자의 경우 치아 신경까지 진행된 충치로, 근관치료가 필요한 상태였습니다"</li>
+            <li><strong>치료 과정의 상세 설명</strong>: "첫 내원 시 3D CT 촬영을 통해 정확한 신경관 구조를 파악한 후..."</li>
+            <li><strong>객관적 데이터 제시</strong>: "치료 후 6개월 추적 관찰 결과, 방사선 사진상 병변이 완전히 치유되었습니다"</li>
+            <li><strong>전문가적 조언 포함</strong>: "이러한 케이스에서는 조기 치료가 중요하며, 정기 검진을 통한 예방이 가장 효과적입니다"</li>
+        </ul>
+        
+        <h5>전문성 강조 팀원의 작업</h5>
+        <ul>
+            <li><strong>치료 전문성 부각</strong>:
+                <ul>
+                    <li>사용된 치료 기법과 장비의 특장점 설명</li>
+                    <li>복잡한 케이스에서의 치료 접근법 상세 기술</li>
+                    <li>의료진의 판단 근거와 치료 선택 이유 설명</li>
+                </ul>
+            </li>
+            <li><strong>환자 궁금증 해소</strong>:
+                <ul>
+                    <li>해당 치료의 일반적인 성공률과 예후</li>
+                    <li>치료 기간과 내원 횟수에 대한 구체적 정보</li>
+                    <li>치료 중 발생 가능한 상황과 대처법</li>
+                    <li>치료 후 관리 방법과 주의사항</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+        <h3>7.4 SEO와 의료법 준수의 균형</h3>
+        <p>메디컨텐츠의 가장 큰 도전 과제는 SEO 최적화와 의료법 준수라는 두 가지 목표를 동시에 달성하는 것입니다. 이를 위해 의료법 팀이 모든 콘텐츠를 검토하며, SEO와 충돌하는 부분에서는 항상 의료법 준수를 우선시합니다.</p>
+        
+        <h4>의료법 팀의 검토 프로세스</h4>
+        <div class="service-box">
+            <h5>의료법 평가 팀원의 체크리스트</h5>
+            <table class="comparison-table">
+                <tr>
+                    <th>검토 항목</th>
+                    <th>금지 사항</th>
+                    <th>허용 범위</th>
+                </tr>
+                <tr>
+                    <td>치료 효과 표현</td>
+                    <td>"100% 완치", "부작용 없음", "최고의 치료"</td>
+                    <td>"개선 가능", "많은 환자분들이 만족"</td>
+                </tr>
+                <tr>
+                    <td>비교 광고</td>
+                    <td>"타 병원보다 우수", "지역 최고"</td>
+                    <td>"우리 병원의 특징", "차별화된 시스템"</td>
+                </tr>
+                <tr>
+                    <td>가격 표시</td>
+                    <td>할인율, 이벤트 가격 강조</td>
+                    <td>일반적인 치료 비용 범위 안내</td>
+                </tr>
+                <tr>
+                    <td>Before/After</td>
+                    <td>과장된 변화, 비현실적 결과</td>
+                    <td>실제 환자 동의 하 객관적 기록</td>
+                </tr>
+                <tr>
+                    <td>의료진 표현</td>
+                    <td>"명의", "최고 전문가"</td>
+                    <td>객관적 경력, 학회 활동 사실</td>
+                </tr>
+            </table>
+            
+            <h5>의료법 수정 팀원의 대체 표현 전략</h5>
+            <div class="highlight">
+                <p><strong>원칙</strong>: SEO 키워드를 최대한 살리면서 의료법을 준수하는 대체 표현 개발</p>
+                <ul>
+                    <li>금지: "강남 임플란트 최고 병원" → 허용: "강남 임플란트, 15년 경력 전문의 진료"</li>
+                    <li>금지: "통증 없는 무통 치료" → 허용: "통증 최소화를 위한 세심한 치료"</li>
+                    <li>금지: "당일 완벽 치료" → 허용: "효율적인 당일 진료 시스템"</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h4>플랫폼별 차별화 전략</h4>
+        <div class="service-box">
+            <h5>네이버 블로그용 콘텐츠</h5>
+            <ul>
+                <li>의료법 심의 기준을 엄격히 적용</li>
+                <li>정보 제공 중심의 객관적 톤 유지</li>
+                <li>직접적인 내원 유도 표현 최소화</li>
+                <li>일반적인 의학 정보와 병원 소개의 균형</li>
+            </ul>
+            
+            <h5>병원 홈페이지 블로그용 콘텐츠</h5>
+            <ul>
+                <li>상대적으로 유연한 표현 허용</li>
+                <li>병원의 특장점과 차별화 요소 적극 강조</li>
+                <li>구체적인 치료 사례와 결과 제시</li>
+                <li>의료진 소개와 병원 시설 상세 안내</li>
+            </ul>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2>8. 사용자 경험(UX) 설계</h2>
+        
+        <p>메디컨텐츠는 병원 마케팅 담당자의 업무 부담을 최소화하면서도 고품질 콘텐츠를 생산할 수 있도록 사용자 경험을 설계했습니다. 특히 유입 포스팅과 전환 포스팅의 특성에 맞춰 차별화된 워크플로우를 제공합니다.</p>
+        
+        <h3>8.1 유입 포스팅 유저 플로우</h3>
+        <p>유입 포스팅은 대부분의 프로세스가 자동화되어 있어, 병원 담당자는 최소한의 개입만으로 콘텐츠를 생산할 수 있습니다.</p>
+        
+        <div class="flow-chart">
+            <h4>유입 포스팅 프로세스 (11단계)</h4>
+            <table class="comparison-table">
+                <tr>
+                    <th>단계</th>
+                    <th>주체</th>
+                    <th>활동</th>
+                    <th>소요 시간</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>서비스</td>
+                    <td>포스팅 계획 제공 (타겟 키워드, 예상 성과 등)</td>
+                    <td>자동</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>서비스</td>
+                    <td>AI 멀티 에이전트를 통한 초안 자동 생성</td>
+                    <td>30분</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>서비스</td>
+                    <td>SEO 최적화 검토 및 자동 수정</td>
+                    <td>10분</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>서비스</td>
+                    <td>의료법 검토 및 필요시 표현 수정</td>
+                    <td>10분</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>서비스</td>
+                    <td>관련 이미지 자동 생성 및 배치</td>
+                    <td>15분</td>
+                </tr>
+                <tr style="background-color: #e3f2fd;">
+                    <td>6</td>
+                    <td><strong>병원</strong></td>
+                    <td><strong>최종 초안 검토 (읽기만)</strong></td>
+                    <td><strong>10분</strong></td>
+                </tr>
+                <tr style="background-color: #e3f2fd;">
+                    <td>7</td>
+                    <td><strong>병원</strong></td>
+                    <td><strong>수정 요청 (선택적)</strong></td>
+                    <td><strong>5분</strong></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>서비스</td>
+                    <td>요청사항 반영 및 최종 콘텐츠 생성</td>
+                    <td>15분</td>
+                </tr>
+                <tr style="background-color: #e3f2fd;">
+                    <td>9</td>
+                    <td><strong>병원</strong></td>
+                    <td><strong>최종 승인</strong></td>
+                    <td><strong>3분</strong></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>서비스</td>
+                    <td>콘텐츠 발행</td>
+                    <td>자동</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>서비스</td>
+                    <td>72시간 후 성과 모니터링 및 리포트</td>
+                    <td>자동</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="highlight">
+            <h5>유입 포스팅의 UX 특징</h5>
+            <ul>
+                <li><strong>병원 담당자 총 소요 시간: 약 18분</strong></li>
+                <li>복잡한 SEO 지식 불필요 - 모든 최적화는 자동 처리</li>
+                <li>수정 요청은 선택사항 - 바쁜 경우 스킵 가능</li>
+                <li>승인 프로세스 간소화 - 원클릭 승인</li>
+            </ul>
+        </div>
+        
+        <h3>8.2 전환 포스팅 유저 플로우</h3>
+        <p>전환 포스팅은 실제 치료 사례를 기반으로 하므로, 병원 담당자의 적극적인 참여가 필요합니다. 하지만 체계적인 가이드와 템플릿을 제공하여 부담을 최소화합니다.</p>
+        
+        <div class="flow-chart">
+            <h4>전환 포스팅 프로세스 (13단계)</h4>
+            <table class="comparison-table">
+                <tr>
+                    <th>단계</th>
+                    <th>주체</th>
+                    <th>활동</th>
+                    <th>소요 시간</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>서비스</td>
+                    <td>포스팅 계획 및 필요 정보 가이드 제공</td>
+                    <td>자동</td>
+                </tr>
+                <tr style="background-color: #fce4ec;">
+                    <td>2</td>
+                    <td><strong>병원</strong></td>
+                    <td><strong>치료 사례 정보 입력 (템플릿 활용)</strong></td>
+                    <td><strong>30분</strong></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>서비스</td>
+                    <td>스토리텔링 초안 생성</td>
+                    <td>40분</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>서비스</td>
+                    <td>이미지 배치 및 캡션 작성</td>
+                    <td>15분</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>서비스</td>
+                    <td>의료법 검토 및 신뢰성 평가</td>
+                    <td>15분</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>서비스</td>
+                    <td>초안 수정 및 다듬기</td>
+                    <td>20분</td>
+                </tr>
+                <tr style="background-color: #fce4ec;">
+                    <td>7</td>
+                    <td><strong>병원</strong></td>
+                    <td><strong>스토리텔링 초안 상세 검토</strong></td>
+                    <td><strong>20분</strong></td>
+                </tr>
+                <tr style="background-color: #fce4ec;">
+                    <td>8</td>
+                    <td><strong>병원</strong></td>
+                    <td><strong>구체적 수정 요청 및 피드백</strong></td>
+                    <td><strong>15분</strong></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>서비스</td>
+                    <td>피드백 반영 및 2차 수정</td>
+                    <td>30분</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>서비스</td>
+                    <td>최종 콘텐츠 재확인 요청</td>
+                    <td>자동</td>
+                </tr>
+                <tr style="background-color: #fce4ec;">
+                    <td>11</td>
+                    <td><strong>병원</strong></td>
+                    <td><strong>최종 검토 및 승인</strong></td>
+                    <td><strong>10분</strong></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>서비스</td>
+                    <td>콘텐츠 발행</td>
+                    <td>자동</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>서비스</td>
+                    <td>전환율 및 문의 수 모니터링</td>
+                    <td>자동</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="highlight">
+            <h5>전환 포스팅의 UX 특징</h5>
+            <ul>
+                <li><strong>병원 담당자 총 소요 시간: 약 75분</strong></li>
+                <li>구조화된 템플릿으로 정보 입력 간소화</li>
+                <li>단계별 가이드 제공으로 작성 부담 감소</li>
+                <li>피드백 반영 과정에서 병원의 의견 적극 수용</li>
+            </ul>
+        </div>
+        
+        <h3>8.3 병원 고객의 참여도와 부담 최적화</h3>
+        <p>메디컨텐츠는 병원 담당자의 시간이 귀중하다는 것을 잘 알고 있습니다. 따라서 최소한의 참여로 최대한의 효과를 낼 수 있도록 다양한 편의 기능을 제공합니다.</p>
+        
+        <div class="service-box">
+            <h4>정보 입력 최적화</h4>
+            <ul>
+                <li><strong>스마트 템플릿</strong>
+                    <ul>
+                        <li>진료과목별 맞춤형 입력 양식</li>
+                        <li>자주 사용하는 정보 자동 저장 및 재사용</li>
+                        <li>드롭다운과 체크박스로 텍스트 입력 최소화</li>
+                    </ul>
+                </li>
+                <li><strong>정보 자동 수집</strong>
+                    <ul>
+                        <li>병원 홈페이지에서 기본 정보 자동 추출</li>
+                        <li>이전 포스팅에서 재사용 가능한 콘텐츠 제안</li>
+                        <li>의료진 정보 DB화로 반복 입력 제거</li>
+                    </ul>
+                </li>
+                <li><strong>모바일 최적화</strong>
+                    <ul>
+                        <li>이동 중에도 간편하게 검토 가능</li>
+                        <li>모바일에서도 수정 요청 가능</li>
+                        <li>푸시 알림으로 승인 요청 즉시 확인</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="service-box">
+            <h4>승인 프로세스 간소화</h4>
+            <ul>
+                <li><strong>미리보기 기능</strong>
+                    <ul>
+                        <li>실제 발행될 모습 그대로 미리보기</li>
+                        <li>PC/모바일 화면 동시 확인</li>
+                        <li>검색 결과 노출 시뮬레이션</li>
+                    </ul>
+                </li>
+                <li><strong>일괄 승인</strong>
+                    <ul>
+                        <li>여러 포스팅 한 번에 검토 및 승인</li>
+                        <li>조건부 승인 (특정 수정사항 반영 시 자동 승인)</li>
+                        <li>승인 권한 위임 기능</li>
+                    </ul>
+                </li>
+                <li><strong>수정 요청 간소화</strong>
+                    <ul>
+                        <li>직접 수정보다는 코멘트 방식 채택</li>
+                        <li>자주 하는 수정 요청 템플릿화</li>
+                        <li>음성 녹음으로 수정사항 전달 가능</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="value-card">
+            <h4>시간 절약 효과</h4>
+            <table class="comparison-table">
+                <tr>
+                    <th>작업</th>
+                    <th>기존 방식</th>
+                    <th>메디컨텐츠</th>
+                    <th>절감률</th>
+                </tr>
+                <tr>
+                    <td>유입 포스팅 1개 작성</td>
+                    <td>3-4시간</td>
+                    <td>18분</td>
+                    <td>92%</td>
+                </tr>
+                <tr>
+                    <td>전환 포스팅 1개 작성</td>
+                    <td>5-6시간</td>
+                    <td>75분</td>
+                    <td>75%</td>
+                </tr>
+                <tr>
+                    <td>2주 캠페인 (6-7개)</td>
+                    <td>20-30시간</td>
+                    <td>3-4시간</td>
+                    <td>85%</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2>9. 성과 측정 및 개선 체계</h2>
+        
+        <p>메디컨텐츠는 단순히 콘텐츠를 생산하는 것에 그치지 않고, 지속적인 성과 측정과 개선을 통해 ROI를 극대화합니다. 데이터 기반의 의사결정을 통해 마케팅 효과를 지속적으로 향상시킵니다.</p>
+        
+        <h3>9.1 KPI 정의</h3>
+        <p>효과적인 성과 측정을 위해서는 명확한 KPI 설정이 필수적입니다. 메디컨텐츠는 포스팅 유형별로 차별화된 KPI를 설정하여 각각의 목적에 맞는 성과를 측정합니다.</p>
+        
+        <table class="comparison-table">
+            <tr>
+                <th>KPI 카테고리</th>
+                <th>유입 포스팅</th>
+                <th>전환 포스팅</th>
+                <th>측정 주기</th>
+            </tr>
+            <tr>
+                <td><strong>노출 지표</strong></td>
+                <td>검색 순위 (1-10위)<br>노출 수<br>검색 점유율</td>
+                <td>내부 링크 클릭률<br>추천 콘텐츠 노출 빈도</td>
+                <td>일별</td>
+            </tr>
+            <tr>
+                <td><strong>유입 지표</strong></td>
+                <td>검색 유입량<br>클릭률(CTR)<br>신규 방문자 비율</td>
+                <td>직접 유입량<br>재방문률<br>유입 경로 다양성</td>
+                <td>일별</td>
+            </tr>
+            <tr>
+                <td><strong>참여 지표</strong></td>
+                <td>평균 체류시간<br>이탈률<br>페이지뷰</td>
+                <td>완독률<br>스크롤 깊이<br>공유/저장 수</td>
+                <td>주별</td>
+            </tr>
+            <tr>
+                <td><strong>전환 지표</strong></td>
+                <td>전환 포스팅 클릭률<br>상담 문의 기여도</td>
+                <td>상담 신청률<br>예약 전환율<br>전화 문의 수</td>
+                <td>주별</td>
+            </tr>
+            <tr>
+                <td><strong>품질 지표</strong></td>
+                <td>콘텐츠 신선도<br>키워드 관련성 점수</td>
+                <td>독자 만족도<br>콘텐츠 신뢰도 점수</td>
+                <td>월별</td>
+            </tr>
+        </table>
+        
+        <div class="highlight">
+            <h4>핵심 성과 지표 (Primary KPIs)</h4>
+            <ul>
+                <li><strong>유입 포스팅</strong>: 월간 검색 유입량, 평균 검색 순위</li>
+                <li><strong>전환 포스팅</strong>: 예약 전환율, 상담 신청 수</li>
+                <li><strong>전체 캠페인</strong>: ROI (투자 대비 신규 환자 가치)</li>
+            </ul>
+        </div>
+        
+        <h3>9.2 발행 후 모니터링 시스템</h3>
+        <p>콘텐츠 발행은 끝이 아닌 시작입니다. 메디컨텐츠는 발행 후 지속적인 모니터링을 통해 필요시 즉각적인 개선 조치를 취합니다.</p>
+        
+        <div class="flow-chart">
+            <h4>발행 후 모니터링 타임라인</h4>
+            <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px;">
+                <div style="margin-bottom: 15px;">
+                    <strong>발행 직후 (0-1시간)</strong>
+                    <ul>
+                        <li>기술적 이슈 체크 (링크, 이미지, 포맷팅)</li>
+                        <li>검색 엔진 인덱싱 요청</li>
+                        <li>소셜 미디어 자동 배포</li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>24시간 후</strong>
+                    <ul>
+                        <li>초기 검색 순위 확인</li>
+                        <li>유입 트래픽 패턴 분석</li>
+                        <li>독자 행동 초기 분석</li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>72시간 후 ⭐</strong>
+                    <ul>
+                        <li>검색 순위 안정화 확인</li>
+                        <li>목표 대비 성과 측정</li>
+                        <li>개선 필요 여부 판단</li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>1주일 후</strong>
+                    <ul>
+                        <li>주간 성과 리포트 생성</li>
+                        <li>경쟁 콘텐츠 동향 분석</li>
+                        <li>추가 최적화 기회 발굴</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong>1개월 후</strong>
+                    <ul>
+                        <li>월간 종합 성과 분석</li>
+                        <li>콘텐츠 업데이트 필요성 검토</li>
+                        <li>장기 트렌드 분석</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="service-box">
+            <h4>72시간 집중 모니터링의 중요성</h4>
+            <p>네이버 검색 알고리즘의 특성상, 콘텐츠 발행 후 72시간이 검색 순위 결정의 골든타임입니다. 이 시기의 사용자 반응(클릭률, 체류시간, 이탈률 등)이 향후 장기적인 검색 순위에 큰 영향을 미치므로, 집중적인 모니터링과 즉각적인 대응이 필요합니다.</p>
+            
+            <h5>72시간 내 조치 가능한 최적화</h5>
+            <ul>
+                <li><strong>제목 A/B 테스트</strong>: 클릭률이 낮은 경우 더 매력적인 제목으로 수정</li>
+                <li><strong>메타 설명 개선</strong>: 검색 결과에서의 어필 포인트 강화</li>
+                <li><strong>내부 링크 추가</strong>: 관련 콘텐츠 연결로 체류시간 증가</li>
+                <li><strong>이미지 최적화</strong>: 로딩 속도 개선 및 대체 텍스트 보완</li>
+            </ul>
+        </div>
+        
+        <h3>9.3 지속적 개선을 위한 피드백 루프</h3>
+        <p>메디컨텐츠는 단순한 모니터링을 넘어, 수집된 데이터를 바탕으로 지속적으로 시스템을 개선하는 피드백 루프를 운영합니다.</p>
+        
+        <div class="value-card">
+            <h4>3단계 피드백 루프</h4>
+            
+            <h5>1. 데이터 수집 및 분석</h5>
+            <ul>
+                <li>모든 콘텐츠의 성과 데이터 자동 수집</li>
+                <li>성공/실패 패턴 분석</li>
+                <li>예상 성과 대비 실제 성과 비교</li>
+                <li>사용자 행동 패턴 심층 분석</li>
+            </ul>
+            
+            <h5>2. 인사이트 도출</h5>
+            <ul>
+                <li><strong>콘텐츠 레벨</strong>
+                    <ul>
+                        <li>높은 성과 콘텐츠의 공통점 발견</li>
+                        <li>특정 키워드/주제의 성과 트렌드</li>
+                        <li>최적 콘텐츠 길이 및 구조 파악</li>
+                    </ul>
+                </li>
+                <li><strong>시스템 레벨</strong>
+                    <ul>
+                        <li>AI 에이전트별 성과 기여도 분석</li>
+                        <li>프로세스 병목 구간 식별</li>
+                        <li>예측 모델 정확도 평가</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h5>3. 시스템 개선</h5>
+            <ul>
+                <li><strong>AI 모델 재학습</strong>
+                    <ul>
+                        <li>새로운 성공 패턴 학습</li>
+                        <li>병원별 특성 반영 강화</li>
+                        <li>의료법 가이드라인 업데이트</li>
+                    </ul>
+                </li>
+                <li><strong>프로세스 최적화</strong>
+                    <ul>
+                        <li>병목 구간 자동화 강화</li>
+                        <li>승인 프로세스 간소화</li>
+                        <li>사용자 피드백 반영</li>
+                    </ul>
+                </li>
+                <li><strong>콘텐츠 전략 조정</strong>
+                    <ul>
+                        <li>고성과 주제 클러스터 확대</li>
+                        <li>저성과 키워드 전략 수정</li>
+                        <li>새로운 콘텐츠 포맷 실험</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="service-box">
+            <h4>월간 성과 리포트 구성</h4>
+            <ul>
+                <li><strong>Executive Summary</strong>
+                    <ul>
+                        <li>핵심 KPI 달성률</li>
+                        <li>전월 대비 성장률</li>
+                        <li>주요 성과 및 개선점</li>
+                    </ul>
+                </li>
+                <li><strong>상세 성과 분석</strong>
+                    <ul>
+                        <li>주제 클러스터별 성과</li>
+                        <li>개별 포스팅 성과 순위</li>
+                        <li>유입-전환 연결 효과 분석</li>
+                    </ul>
+                </li>
+                <li><strong>경쟁사 벤치마킹</strong>
+                    <ul>
+                        <li>동일 지역/진료과목 경쟁사 동향</li>
+                        <li>신규 진입 키워드 기회</li>
+                        <li>콘텐츠 트렌드 변화</li>
+                    </ul>
+                </li>
+                <li><strong>다음 달 전략</strong>
+                    <ul>
+                        <li>집중 공략 주제 클러스터</li>
+                        <li>콘텐츠 일정 및 주제</li>
+                        <li>예상 성과 및 목표</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="highlight">
+            <h4>지속적 개선의 실제 효과</h4>
+            <p>메디컨텐츠를 6개월 이상 사용한 병원들의 평균 성과:</p>
+            <ul>
+                <li>검색 유입량: 초기 대비 <strong>350% 증가</strong></li>
+                <li>예약 전환율: 초기 대비 <strong>180% 개선</strong></li>
+                <li>콘텐츠 생산 시간: 초기 대비 <strong>40% 추가 단축</strong></li>
+                <li>의료법 이슈: <strong>0건</strong> (완벽한 사전 차단)</li>
+            </ul>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2>10. 향후 로드맵</h2>
+        
+        <p>메디컨텐츠는 현재의 성과에 안주하지 않고, 지속적인 혁신을 통해 병원 온라인 마케팅의 새로운 가능성을 열어가고자 합니다. 다음은 향후 1-2년간의 개발 및 확장 계획입니다.</p>
+        
+        <h3>10.1 서비스 확장 계획</h3>
+        
+        <div class="flow-chart">
+            <h4>단계별 확장 로드맵</h4>
+            <div style="background-color: #e8f5e9; padding: 20px; margin: 10px 0; border-radius: 10px;">
+                <h5>Phase 1: 채널 확장 (3-6개월)</h5>
+                <ul>
+                    <li><strong>유튜브 콘텐츠 자동 생성</strong>
+                        <ul>
+                            <li>블로그 콘텐츠를 동영상 스크립트로 변환</li>
+                            <li>AI 나레이션 및 자동 편집 기능</li>
+                            <li>유튜브 SEO 최적화</li>
+                        </ul>
+                    </li>
+                    <li><strong>인스타그램 카드뉴스 생성</strong>
+                        <ul>
+                            <li>핵심 정보 시각화</li>
+                            <li>병원 브랜딩 자동 적용</li>
+                            <li>해시태그 최적화</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div style="background-color: #e3f2fd; padding: 20px; margin: 10px 0; border-radius: 10px;">
+                <h5>Phase 2: AI 고도화 (6-12개월)</h5>
+                <ul>
+                    <li><strong>개인화된 콘텐츠 생성</strong>
+                        <ul>
+                            <li>환자 페르소나별 맞춤 콘텐츠</li>
+                            <li>지역 특성 반영 강화</li>
+                            <li>계절/이벤트 연계 콘텐츠</li>
+                        </ul>
+                    </li>
+                    <li><strong>실시간 트렌드 대응</strong>
+                        <ul>
+                            <li>급상승 검색어 실시간 감지</li>
+                            <li>24시간 내 관련 콘텐츠 생성</li>
+                            <li>바이럴 콘텐츠 예측 모델</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div style="background-color: #fff3cd; padding: 20px; margin: 10px 0; border-radius: 10px;">
+                <h5>Phase 3: 통합 마케팅 플랫폼 (12-18개월)</h5>
+                <ul>
+                    <li><strong>온/오프라인 연계</strong>
+                        <ul>
+                            <li>오프라인 이벤트와 온라인 콘텐츠 연동</li>
+                            <li>QR 코드 기반 콘텐츠 추적</li>
+                            <li>환자 여정 전체 추적</li>
+                        </ul>
+                    </li>
+                    <li><strong>마케팅 자동화</strong>
+                        <ul>
+                            <li>이메일/문자 마케팅 연동</li>
+                            <li>리타겟팅 캠페인 자동 설정</li>
+                            <li>통합 캠페인 관리</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>10.2 추가 기능 개발 방향</h3>
+        
+        <div class="service-box">
+            <h4>차세대 AI 기능</h4>
+            <ul>
+                <li><strong>음성 기반 콘텐츠 생성</strong>
+                    <ul>
+                        <li>의사의 음성 설명을 자동으로 블로그 포스트로 변환</li>
+                        <li>진료 상담 내용 기반 FAQ 자동 생성</li>
+                        <li>팟캐스트 콘텐츠 자동 생성</li>
+                    </ul>
+                </li>
+                <li><strong>이미지 AI 고도화</strong>
+                    <ul>
+                        <li>치료 전후 사진 자동 보정 및 익명화</li>
+                        <li>의료 일러스트레이션 자동 생성</li>
+                        <li>인포그래픽 자동 디자인</li>
+                    </ul>
+                </li>
+                <li><strong>예측 분석 강화</strong>
+                    <ul>
+                        <li>환자 행동 예측 모델</li>
+                        <li>최적 발행 시간 자동 결정</li>
+                        <li>ROI 시뮬레이션</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="service-box">
+            <h4>사용자 경험 혁신</h4>
+            <ul>
+                <li><strong>AI 어시스턴트</strong>
+                    <ul>
+                        <li>자연어로 마케팅 전략 상담</li>
+                        <li>실시간 성과 분석 및 조언</li>
+                        <li>경쟁사 동향 브리핑</li>
+                    </ul>
+                </li>
+                <li><strong>협업 기능 강화</strong>
+                    <ul>
+                        <li>다중 사용자 실시간 편집</li>
+                        <li>승인 워크플로우 커스터마이징</li>
+                        <li>외부 에이전시 협업 도구</li>
+                    </ul>
+                </li>
+                <li><strong>모바일 앱 출시</strong>
+                    <ul>
+                        <li>언제 어디서나 콘텐츠 관리</li>
+                        <li>푸시 알림 기반 즉각 대응</li>
+                        <li>음성 명령 지원</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <h3>10.3 시장 확대 전략</h3>
+        
+        <div class="value-card">
+            <h4>수직적 확장: 의료 분야 심화</h4>
+            <ul>
+                <li><strong>전문 진료과목별 특화</strong>
+                    <ul>
+                        <li>성형외과: 시술별 상세 가이드 및 트렌드 콘텐츠</li>
+                        <li>한의원: 체질별 맞춤 콘텐츠 및 계절 건강 정보</li>
+                        <li>정신건강의학과: 익명성 보장 콘텐츠 전략</li>
+                        <li>소아과: 부모 대상 육아 정보 연계</li>
+                    </ul>
+                </li>
+                <li><strong>병원 규모별 맞춤화</strong>
+                    <ul>
+                        <li>대학병원: 연구 성과 및 첨단 치료 중심</li>
+                        <li>네트워크 병원: 지점별 특화 전략</li>
+                        <li>개인 의원: 의사 개인 브랜딩 강화</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="value-card">
+            <h4>수평적 확장: 타 산업 진출</h4>
+            <ul>
+                <li><strong>전문 서비스업</strong>
+                    <ul>
+                        <li>법무법인: 법률 정보 콘텐츠</li>
+                        <li>회계법인: 세무 가이드 콘텐츠</li>
+                        <li>교육 기관: 입시 정보 및 커리큘럼 소개</li>
+                    </ul>
+                </li>
+                <li><strong>규제 산업</strong>
+                    <ul>
+                        <li>금융: 금융상품 안내 (자본시장법 준수)</li>
+                        <li>부동산: 분양 정보 (표시광고법 준수)</li>
+                        <li>식품: 건강기능식품 정보 (식품위생법 준수)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="highlight">
+            <h4>글로벌 진출 계획</h4>
+            <ul>
+                <li><strong>1단계: 동남아시아</strong> - 한류 영향력이 큰 지역부터 진출</li>
+                <li><strong>2단계: 중화권</strong> - 바이두 SEO 최적화 기능 추가</li>
+                <li><strong>3단계: 영미권</strong> - 구글 SEO 및 HIPAA 규정 대응</li>
+            </ul>
+        </div>
+        
+        <div class="service-box" style="background-color: #e8f5e9; margin-top: 40px;">
+            <h3>맺음말</h3>
+            <p>메디컨텐츠는 단순한 콘텐츠 생성 도구가 아닌, 병원의 온라인 마케팅 성공을 위한 전략적 파트너입니다. 의료법 전문성과 AI 기술, 그리고 데이터 분석 역량을 결합하여, 병원이 안심하고 효과적으로 온라인 마케팅을 수행할 수 있도록 지원합니다.</p>
+            
+            <p>우리의 목표는 모든 병원이 자신들의 전문성과 진정성을 온라인에서 효과적으로 전달하여, 도움이 필요한 환자들과 연결될 수 있도록 돕는 것입니다. 메디컨텐츠와 함께라면, 복잡한 규제 환경에서도 자신 있게 마케팅을 수행하고, 지속 가능한 성장을 이룰 수 있습니다.</p>
+            
+            <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                <strong>"의료법을 지키면서도 효과적인 마케팅, 메디컨텐츠가 함께합니다."</strong>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
